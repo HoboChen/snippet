@@ -1,0 +1,23 @@
+syntax on
+set ignorecase smartcase
+set nu nocompatible cindent ai history=10000 laststatus=2
+set sts=4 tabstop=4 expandtab guifont=Consolas:h14 shiftwidth=4 
+set foldmethod=syntax foldlevel=100 foldcolumn=1
+
+func! Compile() 
+    exec "w"
+    exec "!g++ % -o %< -O2 -std=c++11 -D LOCALDEBUG && size %<"
+endfunc
+
+func! Run() 
+    exec "!./%<"
+endfunc
+
+func! CR() 
+    exec "call Compile()"
+    exec "call Run()"
+endfunc
+
+map <F9> :call Compile() <CR>
+map <F10> :call Run() <CR>
+map <F11> :call CR() <CR>

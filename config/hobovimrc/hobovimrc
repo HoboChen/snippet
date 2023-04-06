@@ -1,0 +1,85 @@
+set nocompatible
+
+set rtp+=~/.vim/bundle/vundle/
+
+set term=screen-256color
+
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim' " Vundle
+Plugin 'bling/vim-airline' " Airline
+Plugin 'scrooloose/nerdtree' " NerdTree
+Plugin 'Xuyuanp/nerdtree-git-plugin' " NerdTree Git Plugin
+Plugin 'ctrlpvim/ctrlp.vim' " Control P
+Plugin 'tpope/vim-commentary' " Vim Comment
+Plugin 'tpope/vim-fugitive' " Vim Fugitive
+Plugin 'bufexplorer.zip' " Buf Explorer
+Plugin 'a.vim' " Switch header / source
+Plugin 'ErichDonGubler/vim-sublime-monokai'
+" Markdown and Others
+Plugin 'mzlogin/vim-markdown-toc'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Bundle 'matrix.vim--Yang'
+Bundle 'Markdown'
+" Plugin 'Valloric/YouCompleteMe'
+" Plugin 'rdnetto/YCM-Generator'
+Plugin 'lifepillar/vim-cheat40'
+call vundle#end()
+
+filetype plugin indent on
+syntax on
+
+" Encoding
+set enc=utf-8
+set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
+
+" Theme
+if has('gui_running')
+  set background=dark
+  colorscheme solarized
+else
+  colorscheme sublimemonokai
+endif
+
+set tabstop=4 softtabstop=4 shiftwidth=4 tabstop=4 expandtab " Indent Settings
+set hlsearch
+set backspace=indent,eol,start "?
+set nu " Line Number
+set history=10000 " Max History
+set laststatus=2
+set incsearch " ?
+set autoread
+set ignorecase smartcase
+
+" auto source ~/.vimrc
+if has("autocmd")
+    autocmd! bufwritepost vimrc source $MYVIMRC
+endif
+
+" set fold
+set foldmethod=syntax
+set foldlevel=100
+set foldcolumn=1
+
+" NerdTree
+map <F2> :NERDTreeToggle  <CR>
+" BufExplorer
+map <silent> <F1> :BufExplorer <CR>
+" Tags
+map <silent> <F12> :ts <CR>
+" Ycm
+map <F4> :YcmCompleter GoTo <CR>
+
+" You Complete Me
+let g:ycm_error_symbol = '>'
+let g:ycm_warning_symbol = '*'
+" let g:ycm_confirm_extra_conf = 0
+" let g:ycm_python_binary_path = '/usr/bin/python3'
+
+" Vim Commentary
+autocmd FileType python,shell set commentstring=#\ %s
+autocmd FileType java,c,cpp set commentstring=//\ %s
+autocmd FileType markdown set commentstring=<!--\ %s\ -->
+
+" Airline
+let g:airline#extensions#tabline#enabled = 1
