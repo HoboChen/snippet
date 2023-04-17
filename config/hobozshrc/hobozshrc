@@ -8,7 +8,7 @@ export TERM=xterm-256color
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="af-magic"
+ZSH_THEME="kphoen"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -90,4 +90,3 @@ export LANG=en_US.UTF-8
 # alias hcopy='xsel --clipboard --input'
 alias hcopy='tee > /tmp/67a4b98d3dad9f5d67caf88acb6a3c1f && /mnt/c/Windows/System32/clip.exe < /tmp/67a4b98d3dad9f5d67caf88acb6a3c1f' # works for wsl
 alias hpaste='xsel --clipboard --output'
-cd ~
