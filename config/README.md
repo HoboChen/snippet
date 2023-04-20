@@ -1,1 +1,1 @@
-这是我的`vim`, `tmux`, `zsh`, `vscode`配置。
+这是我的`git`, `vim`, `shell`, `vscode`配置。
