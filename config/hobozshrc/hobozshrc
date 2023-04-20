@@ -87,6 +87,17 @@ export LANG=en_US.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-# alias hcopy='xsel --clipboard --input'
-alias hcopy='tee > /tmp/67a4b98d3dad9f5d67caf88acb6a3c1f && /mnt/c/Windows/System32/clip.exe < /tmp/67a4b98d3dad9f5d67caf88acb6a3c1f' # works for wsl
+alias hcopy='xsel --clipboard --input'
+# alias hcopy='tee > /tmp/67a4b98d3dad9f5d67caf88acb6a3c1f && /mnt/c/Windows/System32/clip.exe < /tmp/67a4b98d3dad9f5d67caf88acb6a3c1f' # works for wsl
+
 alias hpaste='xsel --clipboard --output'
+alias ta='tmux -2 a'
+alias c='clear'
+export PATH=/home/hobochen/.local/bin:$PATH
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+
