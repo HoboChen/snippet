@@ -1,2 +1,0 @@
-1. c++11.hpp must be compiled with C++11 or newer compile flags
-2. cg2d.hpp should be reconstructed, mainly about the cleanness and eliminate the deprecated functions

@@ -3,3 +3,11 @@
 	name = Hobo Chen
 [core]
     editor = vim
+[color]
+    ui = auto
+[merge]
+    conflictstyle = diff3
+[pull]
+    rebase = true
+[push]
+    default = simple 

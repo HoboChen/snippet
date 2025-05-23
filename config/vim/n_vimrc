@@ -1,0 +1,93 @@
+" ────────────────────────────────────────────────────────────────
+"  Minimal‑but‑modern Vim config for fast navigation in Git repos
+" ────────────────────────────────────────────────────────────────
+" if has('nvim') | set termguicolors | endif        " true‑color if available
+
+set nocompatible
+
+set term=screen-256color
+
+set encoding=utf-8
+syntax on
+filetype plugin indent on
+
+" Auto‑bootstrap vim‑plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+    " ONE line – no back‑slash!
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    " run once, when this session finishes loading
+    autocmd VimEnter * ++once PlugInstall --sync | source $MYVIMRC
+  endif
+  
+  " declare your plugins normally
+  call plug#begin('~/.vim/plugged')
+  Plug 'tpope/vim-sensible'
+  " …
+  call plug#end()
+
+" ── Jump / search
+Plug 'gmarik/Vundle.vim' " Vundle
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'preservim/tagbar'
+Plug 'airblade/vim-rooter'
+Plug 'bling/vim-airline' " Airline
+
+Plug 'ErichDonGubler/vim-sublime-monokai'
+
+" ── Code intelligence
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+
+" ── Git power
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+call plug#end()
+
+" -------------------------------- Core options ------------------
+let mapleader = ","
+set clipboard^=unnamedplus         " use system clipboard
+set nu
+set ignorecase smartcase           " intelligent / search
+set updatetime=300                 " snappier GitGutter refresh
+set mouse=a                        " enable mouse (handy in splits)
+
+" --------------------------------- Keymaps ----------------------
+" fzf
+nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>g :Rg<CR>
+
+" Code (coc.nvim)
+nnoremap gd <Plug>(coc-definition)
+nnoremap gD <Plug>(coc-declaration)
+nnoremap gr <Plug>(coc-references)
+
+" Git (fugitive)
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gd :Gdiffsplit<CR>
+nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>gc :Gcommit<CR>
+
+" GitGutter
+nnoremap ]c <Plug>(GitGutterNextHunk)
+nnoremap [c <Plug>(GitGutterPrevHunk)
+nnoremap <Leader>hs :GitGutterStageHunk<CR>
+nnoremap <Leader>hu :GitGutterUndoHunk<CR>
+nnoremap <Leader>hp :GitGutterPreviewHunk<CR>
+
+" (Optional) Hop / Sneak
+" nnoremap <Leader>w :HopWord<CR>
+" nmap s <Plug>Sneak_s
+" nmap S <Plug>Sneak_S
+
+" -------------------------------- Quality‑of‑life --------------
+" Keep cursor centered during half‑page jumps
+nnoremap <expr> <C-d> 'mz' . v:count1 . '<C-d>`z'
+nnoremap <expr> <C-u> 'mz' . v:count1 . '<C-u>`z'
+
+" Faster window split navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
